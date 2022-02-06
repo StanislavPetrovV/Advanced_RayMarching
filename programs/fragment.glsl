@@ -220,6 +220,11 @@ vec2 getUV(vec2 offset) {
 }
 
 
+vec3 renderAAx1() {
+    return render(getUV(vec2(0)));
+}
+
+
 vec3 renderAAx2() {
     float bxy = int(gl_FragCoord.x + gl_FragCoord.y) & 1;
     float nbxy = 1. - bxy;
@@ -246,7 +251,7 @@ vec3 renderAAx4() {
 
 
 void main() {
-    vec3 color = renderAAx2();  // renderAAx3() renderAAx4()
+    vec3 color = renderAAx1();  // renderAAx2() renderAAx3() renderAAx4() choose AA
     // gamma correction
     color = pow(color, vec3(0.4545));
     fragColor = vec4(color, 1.0);
