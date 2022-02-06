@@ -19,6 +19,9 @@ const int MAX_STEPS = 128;
 const float MAX_DIST = 500;
 const float EPSILON = 0.01;
 
+// choose antialising - 1 2 3 4
+const int AA = 1;  
+
 float cubeSize = 6.0;
 
 float cubeScale = 1.0 / cubeSize;
@@ -251,7 +254,7 @@ vec3 renderAAx4() {
 
 
 void main() {
-    vec3 color = renderAAx1();  // renderAAx2() renderAAx3() renderAAx4() choose AA
+    vec3 color = (AA == 1) ? renderAAx1() : (AA == 2) ? renderAAx2() : (AA == 3) ? renderAAx3(): renderAAx4();
     // gamma correction
     color = pow(color, vec3(0.4545));
     fragColor = vec4(color, 1.0);
