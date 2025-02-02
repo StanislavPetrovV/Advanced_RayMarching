@@ -20,7 +20,7 @@ const float MAX_DIST = 500;
 const float EPSILON = 0.01;
 
 // choose antialising - 1 2 3 4
-const int AA = 1;  
+const int AA = 1;
 
 float cubeSize = 6.0;
 

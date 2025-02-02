@@ -29,7 +29,7 @@ class App(mglw.WindowConfig):
         self.program['u_texture6'] = 6
         self.program['u_texture7'] = 7
 
-    def render(self, time, frame_time):
+    def on_render(self, time, frame_time):
         self.ctx.clear()
         self.program['u_time'] = time
         self.texture1.use(location=1)
@@ -41,10 +41,10 @@ class App(mglw.WindowConfig):
         self.texture7.use(location=7)
         self.quad.render(self.program)
 
-    def mouse_position_event(self, x, y, dx, dy):
+    def on_mouse_position_event(self, x, y, dx, dy):
         self.program['u_mouse'] = (x, y)
 
-    def mouse_scroll_event(self, x_offset, y_offset):
+    def on_mouse_scroll_event(self, x_offset, y_offset):
         self.u_scroll = max(1.0, self.u_scroll + y_offset)
         self.program['u_scroll'] = self.u_scroll
 
